@@ -61,12 +61,59 @@
 # The constructor (__init__ ) should have two parameters the "suit" and the "value" and the suit of the card.
 # The class should store both as attributes.
 
+class Card:
+    
+    def __init__(self,suit,value):
+        self.suit=suit
+        self.value=value
+        
+
 
 # 2.2) Create a Deck class called "Deck".
 # The constructor will create an English Deck (suits: Hearts, Diamonds, Clubs, Spades and values: A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K). It will create a list of cards that contain each of the existing cards in an English Deck.
 # Create a method called "shuffle" that shuffles the cards randomly. 
 # Create a method called "draw" that will draw a single card and print the suit and value. When a card is drawn, the card should be removed from the deck.
 
+class Deck():
+    
+    num_cards=0 #Thought the number of cards in the deck could be interesting and added this
+    
+    def __init__(self):
+        self.cards=[]
+        self.renew() #I ran into the issue that the deck has less and less cards and wanted to be able to renew the deck (e.g. by shuffeling). Therefore I built a separate renew method that can be used in init and in shuffeling.
+        
+        
+    def renew(self):   
+        Deck.num_cards=0
+        suits=["Heart","Diamond","Club","Spade"]
+        values=["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+        for i in suits:
+            for j in values:
+                self.cards.append(Card(i,j))
+                Deck.num_cards+=1       
+            
+            
+    def shuffle(self):
+        import random
+        self.renew()
+        random.shuffle(self.cards)
+        
+    
+    def draw(self):
+        if self.cards!=[]:
+            card_drawn=self.cards.pop()
+            Deck.num_cards-=1
+            print("Suite:",card_drawn.suit,", Value:",card_drawn.value)
+        else:
+            print("Deck is empty")
+    
+    
+game=Deck()  
+game.num_cards
+game.shuffle()
+game.draw()
+game.num_cards   
+    
 
 
 ###################
