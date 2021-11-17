@@ -23,8 +23,8 @@ class Patient:
     def __init__(self, name, symptoms):
         self.name = name
         self.symptoms = symptoms
-        self._test = None
-        self._result = None
+        self._testresults = {}
+        
 
 #
 # 1.2)
@@ -36,8 +36,10 @@ class Patient:
 # This information should be stored somehow.
 
     def add_test(self,test,result):
-        self._test=test
-        self._result=result
+        if type(result)==bool:
+            self._testresults[test]=result
+        else:
+            print('Result needs to be True or False')
 
 #
 # 1.3)
@@ -59,16 +61,19 @@ class Patient:
 #    ['fever', 'cough', 'anosmia']
 
     def has_covid(self):
-        if self._test=="covid" and self._result==True:
+        if 'covid' in self._testresults.keys() and self._testresults['covid']==True:
             return 0.99
-        elif self._test=="covid" and self._result==False:
+        elif 'covid' in self._testresults.keys() and self._testresults['covid']==False:
             return 0.01
         else:
             p=0.05
             for i in self.symptoms:
                 if i in ['fever', 'cough', 'anosmia']:
-                    p+=0.1/self.symptoms.count(i)
+                    p+=0.1/self.symptoms.count(i) #In case the same symptom is named multiple times
             return p
+        
+
+
 
 ######################
 
@@ -94,6 +99,7 @@ class Card:
 # The constructor will create an English Deck (suits: Hearts, Diamonds, Clubs, Spades and values: A, 2, 3, 4, 5, 6, 7, 8, 9, 10, J, Q, K). It will create a list of cards that contain each of the existing cards in an English Deck.
 # Create a method called "shuffle" that shuffles the cards randomly. 
 # Create a method called "draw" that will draw a single card and print the suit and value. When a card is drawn, the card should be removed from the deck.
+import random
 
 class Deck():
     
@@ -115,8 +121,8 @@ class Deck():
             
             
     def shuffle(self):
-        import random
-        self._renew()
+        
+        self._renew() #This means when we shuffle, we shuffle all cards again (depends on the game)
         random.shuffle(self.cards)
         
     
@@ -129,13 +135,8 @@ class Deck():
             print("Deck is empty")
     
     
-game=Deck()  
-game.num_cards
-game.shuffle()
-game.draw()
-game.num_cards   
-    
 
+    
 
 ###################
 
@@ -210,16 +211,3 @@ class Circle(PlaneFigure):
         print("The surface of the circle is " + str(sur))
         return sur
     
-
-#Exploratory testing:    
-a= Triangle(1,2,3,4)
-b= Rectangle(2,4)
-c= Circle(1)
-
-a.compute_perimeter()
-a.compute_surface()
-b.compute_perimeter()
-b.compute_surface()
-c.compute_perimeter()
-c.compute_surface()
-
