@@ -4,7 +4,7 @@ Created on Wed Nov 17 09:23:27 2021
 
 @author: icuev
 """
-class Remove_na:
+class Preprocessor_nan:
     def __init__(self,database):
         self._db=database
     def remove_nan(self,listvar):
