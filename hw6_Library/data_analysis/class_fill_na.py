@@ -14,6 +14,3 @@ class Fill_na:
         for i in listvar:
             df[i]=df[i].fillna(df[i].mean(),inplace=True)
         return df
-
-train_data2=Fill_na(train_data2).fill(["height","weight"])
-train_data2["height"]
