@@ -101,10 +101,10 @@ class Deck():
     
     def __init__(self):
         self.cards=[]
-        self.renew() #I ran into the issue that the deck has less and less cards and wanted to be able to renew the deck (e.g. by shuffeling). Therefore I built a separate renew method that can be used in init and in shuffeling.
+        self._renew() #I ran into the issue that the deck has less and less cards and wanted to be able to renew the deck (e.g. by shuffeling). Therefore I built a separate renew method that can be used in init and in shuffeling.
         
         
-    def renew(self):   
+    def _renew(self):   
         Deck.num_cards=0
         suits=["Heart","Diamond","Club","Spade"]
         values=["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
@@ -116,7 +116,7 @@ class Deck():
             
     def shuffle(self):
         import random
-        self.renew()
+        self._renew()
         random.shuffle(self.cards)
         
     
