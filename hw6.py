@@ -146,9 +146,80 @@ game.num_cards
 # compute_perimeter() that will implement the formula to compute the perimiter of the plane figure.
 # compute_surface() that will implement the formula to compute the surface of the plane figure.
 
+from abc import ABCMeta, abstractmethod
+class PlaneFigure(metaclass=ABCMeta):    
+    @abstractmethod
+    def compute_perimeter(self):
+        return NotImplementedError
+    
+    @abstractmethod
+    def compute_surface(self):
+        return NotImplementedError
+    
+    
+
 # 3.2 Create a child class called "Triangle" that inherits from "PlaneFigure" and has as parameters in the constructor "base", "c1", "c2", "h". ("base" being the base, "c1" and "c2" the other two sides of the triangle and "h" the height). Implement the abstract methods with the formula of the triangle.
+class Triangle(PlaneFigure):
+    def __init__(self,base, c1, c2, h):
+        self.base=base
+        self.c1=c1
+        self.c2=c2
+        self.h=h
+    
+    def compute_perimeter(self):
+        per= self.base+self.c1+self.c2
+        print("The perimeter of the triangle is " + str(per))
+        return per
+    
+    def compute_surface(self):
+        sur= self.base*self.h/2
+        print("The surface of the triangle is " + str(sur))
+        return sur
 
 # 3.3 Create a child class called "Rectangle" that inherits from "PlaneFigure" and has as parameters in the constructor "a", "b" (sides of the rectangle). Implement the abstract methods with the formula of the rectangle.
-
+class Rectangle(PlaneFigure):
+    def __init__(self,a,b):
+        self.a=a
+        self.b=b
+    
+    
+    def compute_perimeter(self):
+        per= (self.a+self.b)*2
+        print("The perimeter of the rectangle is " + str(per))
+        return per
+    
+    def compute_surface(self):
+        sur= self.a*self.b
+        print("The surface of the rectangle is " + str(sur))
+        return sur
+    
 # 3.3 Create a child class called "Circle" that inherits from "PlaneFigure" and has as parameters in the constructor "radius" (radius of the circle). Implement the abstract methods with the formula of the circle.
+from math import pi
+
+class Circle(PlaneFigure):
+    def __init__(self,r):
+        self.r=r
+    
+    def compute_perimeter(self):
+        per= 2*pi*self.r
+        print("The perimeter of the circle is " + str(per))
+        return per
+    
+    def compute_surface(self):
+        sur= pi*self.r**2
+        print("The surface of the circle is " + str(sur))
+        return sur
+    
+
+#Exploratory testing:    
+a= Triangle(1,2,3,4)
+b= Rectangle(2,4)
+c= Circle(1)
+
+a.compute_perimeter()
+a.compute_surface()
+b.compute_perimeter()
+b.compute_surface()
+c.compute_perimeter()
+c.compute_surface()
 
