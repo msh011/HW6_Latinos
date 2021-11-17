@@ -6,8 +6,9 @@ class Df_load():
     
    
     def __init__(self,filepath):
-        data=Df_load.read_data(filepath)
-        self.train, self.test=Df_load.split_data(data)
+        self.data=Df_load.read_data(filepath)
+        self.train, self.test=Df_load.split_data(self.data)
+        return self.train, self.test
         
     def read_data(namefile):
         import pandas as pd
