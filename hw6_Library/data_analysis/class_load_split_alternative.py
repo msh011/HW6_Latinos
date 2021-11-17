@@ -26,10 +26,6 @@ class load_split_data:
         data_train,data_test=train_test_split(self._data, test_size=0.2, random_state=42)
         return data_train,data_test
 
-data=load_split_data("sample_diabetes_mellitus_data.csv")
-df=data.read_data()
-train_data,test_data=data.split_data(0.2)    
-
 class read_split_data:
     
     def __init__(self,filename):
@@ -45,6 +41,3 @@ class read_split_data:
         data_train,data_test=train_test_split(self._data, test_size=0.2, random_state=42)
         
         return data_train,data_test
-
-data=read_split_data("sample_diabetes_mellitus_data.csv")
-train_data2,test_data2=data.read_split(0.2)  
