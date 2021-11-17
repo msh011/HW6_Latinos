@@ -23,7 +23,7 @@ class Load_split_data:
         
     
     def split_data(self,test_size):
-        data_train,data_test=train_test_split(self._data, test_size=0.2, random_state=42)
+        data_train,data_test=train_test_split(self._data, test_size=test_size, random_state=42)
         return data_train,data_test
 
 class Read_split_data:
@@ -38,7 +38,7 @@ class Read_split_data:
         except FileNotFoundError:
             return "File not found. Does the file exist?" 
         
-        data_train,data_test=train_test_split(self._data, test_size=0.2, random_state=42)
+        data_train,data_test=train_test_split(self._data, test_size=test_size, random_state=42)
         
         return data_train,data_test
  
