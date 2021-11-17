@@ -67,7 +67,7 @@ class Patient:
             p=0.05
             for i in self.symptoms:
                 if i in ['fever', 'cough', 'anosmia']:
-                    p+=0.1
+                    p+=0.1/self.symptoms.count(i)
             return p
 
 ######################
