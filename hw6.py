@@ -18,6 +18,13 @@
 # the parameters should be stored as attributes
 # called "name" and "symptoms" respectively
 
+class Patient:
+    
+    def __init__(self, name, symptoms):
+        self.name = name
+        self.symptoms = symptoms
+        self._test = None
+        self._result = None
 
 #
 # 1.2)
@@ -28,6 +35,9 @@
 #
 # This information should be stored somehow.
 
+    def add_test(self,test,result):
+        self._test=test
+        self._result=result
 
 #
 # 1.3)
@@ -48,6 +58,17 @@
 #    following symptoms:
 #    ['fever', 'cough', 'anosmia']
 
+    def has_covid(self):
+        if self._test=="covid" and self._result==True:
+            return 0.99
+        elif self._test=="covid" and self._result==False:
+            return 0.01
+        else:
+            p=0.05
+            for i in self.symptoms:
+                if i in ['fever', 'cough', 'anosmia']:
+                    p+=0.1
+            return p
 
 ######################
 
