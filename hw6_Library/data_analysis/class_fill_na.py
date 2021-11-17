@@ -4,7 +4,7 @@ Created on Wed Nov 17 11:01:17 2021
 
 @author: icuev
 """
-class Fill_na:
+class Preprocessor_Fill:
     
     def __init__(self,database):
         self._data=database
