@@ -12,5 +12,5 @@ class Fill_na:
     def fill(self,listvar):
         df=self._data.copy()
         for i in listvar:
-            df[i]=df[i].fillna(df[i].mean(),inplace=True)
+            df[i].fillna(df[i].mean(),inplace=True)
         return df
