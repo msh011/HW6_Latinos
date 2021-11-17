@@ -8,7 +8,7 @@ Created on Wed Nov 17 08:00:15 2021
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
-class load_split_data:
+class Load_split_data:
     
     def __init__(self,filename):
         self.filename=filename
@@ -26,7 +26,7 @@ class load_split_data:
         data_train,data_test=train_test_split(self._data, test_size=0.2, random_state=42)
         return data_train,data_test
 
-class read_split_data:
+class Read_split_data:
     
     def __init__(self,filename):
         self.filename=filename
@@ -41,3 +41,4 @@ class read_split_data:
         data_train,data_test=train_test_split(self._data, test_size=0.2, random_state=42)
         
         return data_train,data_test
+ 
